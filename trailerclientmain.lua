@@ -31,7 +31,6 @@ local GotTrailer = 0
 local TrailerHandle = 0
 local oldtrailer = 0
 local oldtrailermodel = 0
--- local currentfrozenvehicle = 0
 local IsFrozenEntity1 = false
 Citizen.CreateThread(function()
 	while true do
@@ -60,7 +59,7 @@ Citizen.CreateThread(function()
 						-- FreezeEntityPosition
 						if dist < 1 then
 							SetTextComponentFormat("STRING")
-							AddTextComponentString("Appuyez ~INPUT_CONTEXT~ ouvrir menu de remorquage")
+							AddTextComponentString("Press ~INPUT_CONTEXT~ to open the Tow Menu")
 							DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 							if IsControlJustPressed(1, Keys["E"]) then
 								OpenVehiculeMenu(oldtrailer, coords2)
@@ -83,9 +82,9 @@ Citizen.CreateThread(function()
 						if dist < 1 then
 							SetTextComponentFormat("STRING")
 							if CurrentlyTowedVehicle7 == nil then
-								AddTextComponentString("Appuyez ~INPUT_CONTEXT~ pour attacher véhicule")
+								AddTextComponentString("Press ~INPUT_CONTEXT~ to attach the vehicle")
 							else
-								AddTextComponentString("Appuyez ~INPUT_CONTEXT~ pour détacher véhicule")
+								AddTextComponentString("Press ~INPUT_CONTEXT~ to detach the vehicle")
 							end
 							DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 							if IsControlJustPressed(1, Keys["E"]) then
@@ -115,9 +114,9 @@ Citizen.CreateThread(function()
 						if dist < 1 then
 							SetTextComponentFormat("STRING")
 							if CurrentlyTowedVehicle8 == nil then
-								AddTextComponentString("Appuyez ~INPUT_CONTEXT~ pour attacher véhicule")
+								AddTextComponentString("Press ~INPUT_CONTEXT~ to attach the vehicle")
 							else
-								AddTextComponentString("Appuyez ~INPUT_CONTEXT~ pour détacher véhicule")
+								AddTextComponentString("Press ~INPUT_CONTEXT~ to detach the vehicle")
 							end
 							DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 							if IsControlJustPressed(1, Keys["E"]) then
@@ -193,23 +192,23 @@ function OpenVehiculeMenu(oldtrailer, coords2)
 	
 	
 	if porteCapotOuvert then
-		table.insert(elements, {label = 'Fermer le plateau',	value = 'FermeturePlateau'})
+		table.insert(elements, {label = 'Close the Tray',	value = 'FermeturePlateau'})
 	else
-		table.insert(elements, {label = 'Ouvrir le plateau',		value = 'OuverturePlateau'})
+		table.insert(elements, {label = 'Open the tray',		value = 'OuverturePlateau'})
 	end
 	
 	if porteCoffreOuvert then
-		table.insert(elements, {label = 'Fermer la rampe',	value = 'FermetureRampe'})
+		table.insert(elements, {label = 'Close the ramp',	value = 'FermetureRampe'})
 	else
-		table.insert(elements, {label = 'Ouvrir la rampe',		value = 'OuvertureRampe'})
+		table.insert(elements, {label = 'Open the ramp',		value = 'OuvertureRampe'})
 	end	
 	
-	table.insert(elements, {label = 'Mettre/enlever voiture avant bas',	value = 'VoitureAvantBas'})
-	table.insert(elements, {label = 'Mettre/enlever voiture mileu bas',	value = 'VoitureMilieuBas'})
-	table.insert(elements, {label = 'Mettre/enlever voiture arrière bas',	value = 'VoitureArriereBas'})
-	table.insert(elements, {label = 'Mettre/enlever voiture avant haut',	value = 'VoitureAvantHaut'})
-	table.insert(elements, {label = 'Mettre/enlever voiture mileu haut',	value = 'VoitureMilieuHaut'})
-	table.insert(elements, {label = 'Mettre/enlever voiture arrière haut',	value = 'VoitureArriereHaut'})
+	table.insert(elements, {label = 'Put / remove bottom front car',	value = 'VoitureAvantBas'})
+	table.insert(elements, {label = 'Put / remove bottom middle car',	value = 'VoitureMilieuBas'})
+	table.insert(elements, {label = 'Put / remove bottom rear car',	value = 'VoitureArriereBas'})
+	table.insert(elements, {label = 'Put / remove top front car',	value = 'VoitureAvantHaut'})
+	table.insert(elements, {label = 'Put / remove top middle car',	value = 'VoitureMilieuHaut'})
+	table.insert(elements, {label = 'Put / remove top rear car',	value = 'VoitureArriereHaut'})
 	
 
 	ESX.UI.Menu.Open(
